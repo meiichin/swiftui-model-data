@@ -23,7 +23,34 @@ struct ContentView: View {
     ]
     
     var body: some View {
-        ProductView()
+        NavigationView{
+            ScrollView{
+                ForEach(data) {
+                    row in
+                    VStack(spacing: 10){
+                        ProductView(data: row)
+                    }
+                }
+            }
+            .navigationBarTitle("Kawasaki Ninja")
+            .navigationBarItems(trailing:
+                HStack(spacing: 20){
+                    Button(action: {print("atas")}){
+                        Image(systemName: "person.fill")
+                    }
+                    Button(action: {print("atas")}){
+                        Image(systemName: "star.fill")
+                    }
+                    Button(action: {print("atas")}){
+                        Image(systemName: "cart.fill")
+                    }
+                }
+            )
+            
+        }
+        .accentColor(Color.secondary)
+        // untuk ipad dan juga landscape
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -57,11 +84,14 @@ struct ProductModel : Identifiable {
 
 // Component product
 struct ProductView: View {
+    
+    let data: ProductModel
+    
     var body: some View{
         VStack(alignment:.leading){
             // image
             ZStack(alignment:.topTrailing){
-                Image("ninja-1")
+                Image(self.data.productImage)
                     .resizable()
                     .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                     .frame(height: 200)
@@ -75,12 +105,12 @@ struct ProductView: View {
             }
             
             // title and price
-            Text("Ninja ZX-250R")
+            Text(self.data.productName)
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .bold()
                 .padding(.leading)
                 .padding(.trailing)
-            Text("Rp. 100.000.000")
+            Text("Rp. \(self.data.productPrice)")
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .bold()
                 .padding(.leading)
@@ -90,7 +120,7 @@ struct ProductView: View {
             // location
             HStack{
                 Image(systemName: "mappin.circle")
-                Text("Kota Yogyakarta")
+                Text(self.data.location)
             }
             .padding(.leading)
             .padding(.trailing)
@@ -98,15 +128,14 @@ struct ProductView: View {
             // rate
             HStack{
                 HStack{
-                    Image(systemName: "star.fill")
-                        .foregroundColor(Color.yellow)
-                    Image(systemName: "star.fill")
-                        .foregroundColor(Color.yellow)
-                    Image(systemName: "star.fill")
-                        .foregroundColor(Color.yellow)
-                    Image(systemName: "star.fill")
-                        .foregroundColor(Color.yellow)
+                    // looping the star
+                    ForEach(0..<self.data.rateCount){
+                        items in
+                        Image(systemName: "star.fill")
+                            .foregroundColor(Color.yellow)
+                    }
                 }
+                .padding()
             }
             .padding(.leading)
             .padding(.trailing)
