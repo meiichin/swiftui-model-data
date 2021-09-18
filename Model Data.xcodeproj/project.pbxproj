@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA5F1DA326F5C35F00C24A65 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F1DA226F5C35F00C24A65 /* DataModel.swift */; };
+		CA5F1DA526F5C41300C24A65 /* GlobalObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F1DA426F5C41300C24A65 /* GlobalObject.swift */; };
 		CAF4B82626F4D34900FFF871 /* Model_DataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4B82526F4D34900FFF871 /* Model_DataApp.swift */; };
 		CAF4B82826F4D34900FFF871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF4B82726F4D34900FFF871 /* ContentView.swift */; };
 		CAF4B82A26F4D34C00FFF871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF4B82926F4D34C00FFF871 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA5F1DA226F5C35F00C24A65 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		CA5F1DA426F5C41300C24A65 /* GlobalObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalObject.swift; sourceTree = "<group>"; };
 		CAF4B82226F4D34900FFF871 /* Model Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Model Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF4B82526F4D34900FFF871 /* Model_DataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_DataApp.swift; sourceTree = "<group>"; };
 		CAF4B82726F4D34900FFF871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 				CAF4B82926F4D34C00FFF871 /* Assets.xcassets */,
 				CAF4B82E26F4D34C00FFF871 /* Info.plist */,
 				CAF4B82B26F4D34C00FFF871 /* Preview Content */,
+				CA5F1DA226F5C35F00C24A65 /* DataModel.swift */,
+				CA5F1DA426F5C41300C24A65 /* GlobalObject.swift */,
 			);
 			path = "Model Data";
 			sourceTree = "<group>";
@@ -139,7 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF4B82826F4D34900FFF871 /* ContentView.swift in Sources */,
+				CA5F1DA526F5C41300C24A65 /* GlobalObject.swift in Sources */,
 				CAF4B82626F4D34900FFF871 /* Model_DataApp.swift in Sources */,
+				CA5F1DA326F5C35F00C24A65 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
