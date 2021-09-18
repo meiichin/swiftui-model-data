@@ -22,14 +22,14 @@ struct ContentView: View {
         ProductModel(id: 10, productname: "Ninja XR-0R", productimage: "ninja-10", productprice: 100000000, location: "Kab. Sleman", ratecount: 4, ratetotal: 50)
     ]
     
-    @State var totalcart:Int = 3
+    @State var totalcart:Int = 0
     var body: some View {
         NavigationView{
             ScrollView{
                 ForEach(data) {
                     row in
                     VStack(spacing: 10){
-                        ProductView(data: row)
+                        ProductView(data: row, totalproduct: self.$totalcart)
                     }
                 }
             }
@@ -106,6 +106,7 @@ struct ProductModel : Identifiable {
 struct ProductView: View {
     
     let data: ProductModel
+    @Binding var totalproduct:Int
     
     var body: some View{
         VStack(alignment:.leading){
@@ -161,24 +162,31 @@ struct ProductView: View {
             .padding(.trailing)
             
             // button add cart
-            Button(action: {print("OK")}){
-                HStack{
-                    Spacer()
-                    HStack{
-                        Image(systemName: "cart")
-                        Text("Add to cart")
-                            .font(.callout)
-                    }
-                    .padding()
-                    Spacer()
-                }
-            }
-            .background(Color.green)
-            .foregroundColor(Color.white)
-            .cornerRadius(10)
-            .padding()
+            AddCartView(add: $totalproduct)
         }
         .background(Color("Color"))
         .cornerRadius(15)
+    }
+}
+
+struct AddCartView: View {
+    @Binding var add:Int
+    var body: some View{
+        Button(action: {self.add += 1}){
+            HStack{
+                Spacer()
+                HStack{
+                    Image(systemName: "cart")
+                    Text("Add to cart")
+                        .font(.callout)
+                }
+                .padding()
+                Spacer()
+            }
+        }
+        .background(Color.green)
+        .foregroundColor(Color.white)
+        .cornerRadius(10)
+        .padding()
     }
 }
