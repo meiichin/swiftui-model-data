@@ -22,6 +22,7 @@ struct ContentView: View {
         ProductModel(id: 10, productname: "Ninja XR-0R", productimage: "ninja-10", productprice: 100000000, location: "Kab. Sleman", ratecount: 4, ratetotal: 50)
     ]
     
+    @State var totalcart:Int = 3
     var body: some View {
         NavigationView{
             ScrollView{
@@ -41,9 +42,7 @@ struct ContentView: View {
                     Button(action: {print("atas")}){
                         Image(systemName: "star.fill")
                     }
-                    Button(action: {print("atas")}){
-                        Image(systemName: "cart.fill")
-                    }
+                    CartView(total: $totalcart)
                 }
             )
             
@@ -51,6 +50,27 @@ struct ContentView: View {
         .accentColor(Color.secondary)
         // untuk ipad dan juga landscape
         .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
+// component for cart
+
+struct CartView: View {
+    @Binding var total:Int
+    var body: some View{
+        ZStack{
+            Button(action: {print("atas")}){
+                Image(systemName: "cart.fill")
+            }
+            Text("\(total)")
+                .foregroundColor(Color.white)
+                .frame(width: 10, height: 10)
+                .font(.body)
+                .padding(5)
+                .background(Color.red)
+                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                .offset(x:10, y:-10)
+        }
     }
 }
 
